@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.button1 = new System.Windows.Forms.Button();
 			this.tbWebUsername = new System.Windows.Forms.TextBox();
 			this.tbWebPassword = new System.Windows.Forms.TextBox();
@@ -45,11 +47,8 @@
 			this.trdr = new System.Windows.Forms.TextBox();
 			this.item = new System.Windows.Forms.TextBox();
 			this.button3 = new System.Windows.Forms.Button();
-			this.label8 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label21 = new System.Windows.Forms.Label();
-			this.tbUserID = new System.Windows.Forms.TextBox();
-			this.label20 = new System.Windows.Forms.Label();
+			this.btnAuthenticate = new System.Windows.Forms.Button();
 			this.tbRefID = new System.Windows.Forms.TextBox();
 			this.label19 = new System.Windows.Forms.Label();
 			this.tbModule = new System.Windows.Forms.TextBox();
@@ -62,23 +61,26 @@
 			this.label15 = new System.Windows.Forms.Label();
 			this.tbAppID = new System.Windows.Forms.TextBox();
 			this.label13 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
 			this.btnCheckIfWSWorks = new System.Windows.Forms.Button();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.tbSerialNumberOrRegisteredName = new System.Windows.Forms.TextBox();
+			this.btnRefresh = new System.Windows.Forms.Button();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.label20 = new System.Windows.Forms.Label();
+			this.tbUserID = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(868, 147);
+			this.button1.Location = new System.Drawing.Point(100, 147);
 			this.button1.Margin = new System.Windows.Forms.Padding(4);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(196, 28);
+			this.button1.Size = new System.Drawing.Size(123, 28);
 			this.button1.TabIndex = 0;
-			this.button1.Text = "Login and Authenticate";
+			this.button1.Text = "Login";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
@@ -87,18 +89,20 @@
 			this.tbWebUsername.Location = new System.Drawing.Point(100, 53);
 			this.tbWebUsername.Margin = new System.Windows.Forms.Padding(4);
 			this.tbWebUsername.Name = "tbWebUsername";
-			this.tbWebUsername.Size = new System.Drawing.Size(132, 22);
+			this.tbWebUsername.Size = new System.Drawing.Size(123, 22);
 			this.tbWebUsername.TabIndex = 1;
 			this.tbWebUsername.Text = "demo";
+			this.toolTip1.SetToolTip(this.tbWebUsername, "User name (Code) defined in SoftOne Web Accounts");
 			// 
 			// tbWebPassword
 			// 
 			this.tbWebPassword.Location = new System.Drawing.Point(100, 87);
 			this.tbWebPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbWebPassword.Name = "tbWebPassword";
-			this.tbWebPassword.Size = new System.Drawing.Size(132, 22);
+			this.tbWebPassword.Size = new System.Drawing.Size(123, 22);
 			this.tbWebPassword.TabIndex = 2;
 			this.tbWebPassword.Text = "demo";
+			this.toolTip1.SetToolTip(this.tbWebPassword, "Password defined in SoftOne Web Accounts");
 			// 
 			// label1
 			// 
@@ -241,21 +245,12 @@
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label8.Location = new System.Drawing.Point(239, 56);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(181, 17);
-			this.label8.TabIndex = 17;
-			this.label8.Text = "Username of Web Account ";
-			// 
 			// groupBox1
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox1.Controls.Add(this.label21);
+			this.groupBox1.Controls.Add(this.label8);
+			this.groupBox1.Controls.Add(this.btnAuthenticate);
 			this.groupBox1.Controls.Add(this.tbUserID);
 			this.groupBox1.Controls.Add(this.label20);
 			this.groupBox1.Controls.Add(this.tbRefID);
@@ -275,60 +270,39 @@
 			this.groupBox1.Controls.Add(this.tbWebPassword);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.label12);
-			this.groupBox1.Controls.Add(this.label11);
-			this.groupBox1.Controls.Add(this.label8);
 			this.groupBox1.Location = new System.Drawing.Point(12, 67);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(1071, 182);
+			this.groupBox1.Size = new System.Drawing.Size(977, 182);
 			this.groupBox1.TabIndex = 18;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Login Web User";
 			// 
-			// label21
+			// btnAuthenticate
 			// 
-			this.label21.AutoSize = true;
-			this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label21.Location = new System.Drawing.Point(757, 56);
-			this.label21.Name = "label21";
-			this.label21.Size = new System.Drawing.Size(181, 17);
-			this.label21.TabIndex = 38;
-			this.label21.Text = "Username of Web Account ";
-			// 
-			// tbUserID
-			// 
-			this.tbUserID.Location = new System.Drawing.Point(690, 117);
-			this.tbUserID.Margin = new System.Windows.Forms.Padding(4);
-			this.tbUserID.Name = "tbUserID";
-			this.tbUserID.Size = new System.Drawing.Size(60, 22);
-			this.tbUserID.TabIndex = 36;
-			this.tbUserID.Text = "1";
-			// 
-			// label20
-			// 
-			this.label20.AutoSize = true;
-			this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label20.Location = new System.Drawing.Point(608, 120);
-			this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(57, 17);
-			this.label20.TabIndex = 37;
-			this.label20.Text = "UserID";
+			this.btnAuthenticate.Location = new System.Drawing.Point(516, 147);
+			this.btnAuthenticate.Margin = new System.Windows.Forms.Padding(4);
+			this.btnAuthenticate.Name = "btnAuthenticate";
+			this.btnAuthenticate.Size = new System.Drawing.Size(123, 28);
+			this.btnAuthenticate.TabIndex = 41;
+			this.btnAuthenticate.Text = "Authenticate";
+			this.btnAuthenticate.UseVisualStyleBackColor = true;
+			this.btnAuthenticate.Click += new System.EventHandler(this.btnAuthenticate_Click);
 			// 
 			// tbRefID
 			// 
-			this.tbRefID.Location = new System.Drawing.Point(690, 87);
+			this.tbRefID.Location = new System.Drawing.Point(516, 87);
 			this.tbRefID.Margin = new System.Windows.Forms.Padding(4);
 			this.tbRefID.Name = "tbRefID";
+			this.tbRefID.ReadOnly = true;
 			this.tbRefID.Size = new System.Drawing.Size(60, 22);
 			this.tbRefID.TabIndex = 34;
-			this.tbRefID.Text = "1";
+			this.toolTip1.SetToolTip(this.tbRefID, "Reference ID as obtained from login");
 			// 
 			// label19
 			// 
 			this.label19.AutoSize = true;
 			this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label19.Location = new System.Drawing.Point(608, 90);
+			this.label19.Location = new System.Drawing.Point(434, 90);
 			this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(48, 17);
@@ -337,18 +311,20 @@
 			// 
 			// tbModule
 			// 
-			this.tbModule.Location = new System.Drawing.Point(690, 53);
+			this.tbModule.Location = new System.Drawing.Point(516, 53);
 			this.tbModule.Margin = new System.Windows.Forms.Padding(4);
 			this.tbModule.Name = "tbModule";
+			this.tbModule.ReadOnly = true;
 			this.tbModule.Size = new System.Drawing.Size(60, 22);
 			this.tbModule.TabIndex = 32;
-			this.tbModule.Text = "0";
+			this.toolTip1.SetToolTip(this.tbModule, "Module ID as obtaned from login (Usually 0 is for user)\r\nIt represents the SoftOn" +
+        "e Entity (12=Suppliers, 13=Customers, etc.)");
 			// 
 			// label18
 			// 
 			this.label18.AutoSize = true;
 			this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label18.Location = new System.Drawing.Point(608, 56);
+			this.label18.Location = new System.Drawing.Point(434, 56);
 			this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(60, 17);
@@ -359,7 +335,7 @@
 			// 
 			this.label16.AutoSize = true;
 			this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label16.Location = new System.Drawing.Point(440, 27);
+			this.label16.Location = new System.Drawing.Point(266, 27);
 			this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(142, 17);
@@ -379,18 +355,19 @@
 			// 
 			// tbBranch
 			// 
-			this.tbBranch.Location = new System.Drawing.Point(522, 87);
+			this.tbBranch.Location = new System.Drawing.Point(348, 87);
 			this.tbBranch.Margin = new System.Windows.Forms.Padding(4);
 			this.tbBranch.Name = "tbBranch";
+			this.tbBranch.ReadOnly = true;
 			this.tbBranch.Size = new System.Drawing.Size(60, 22);
 			this.tbBranch.TabIndex = 28;
-			this.tbBranch.Text = "1000";
+			this.toolTip1.SetToolTip(this.tbBranch, "Branch obtained through the Login method");
 			// 
 			// label17
 			// 
 			this.label17.AutoSize = true;
 			this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label17.Location = new System.Drawing.Point(440, 90);
+			this.label17.Location = new System.Drawing.Point(266, 90);
 			this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label17.Name = "label17";
 			this.label17.Size = new System.Drawing.Size(59, 17);
@@ -399,18 +376,19 @@
 			// 
 			// tbCompany
 			// 
-			this.tbCompany.Location = new System.Drawing.Point(522, 53);
+			this.tbCompany.Location = new System.Drawing.Point(348, 53);
 			this.tbCompany.Margin = new System.Windows.Forms.Padding(4);
 			this.tbCompany.Name = "tbCompany";
+			this.tbCompany.ReadOnly = true;
 			this.tbCompany.Size = new System.Drawing.Size(60, 22);
 			this.tbCompany.TabIndex = 25;
-			this.tbCompany.Text = "1000";
+			this.toolTip1.SetToolTip(this.tbCompany, "Company obtained through the Login method");
 			// 
 			// label15
 			// 
 			this.label15.AutoSize = true;
 			this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label15.Location = new System.Drawing.Point(440, 56);
+			this.label15.Location = new System.Drawing.Point(266, 56);
 			this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(74, 17);
@@ -422,9 +400,10 @@
 			this.tbAppID.Location = new System.Drawing.Point(100, 117);
 			this.tbAppID.Margin = new System.Windows.Forms.Padding(4);
 			this.tbAppID.Name = "tbAppID";
-			this.tbAppID.Size = new System.Drawing.Size(132, 22);
+			this.tbAppID.Size = new System.Drawing.Size(123, 22);
 			this.tbAppID.TabIndex = 22;
 			this.tbAppID.Text = "157";
+			this.toolTip1.SetToolTip(this.tbAppID, "ID of the Service defined in Web Services\r\n");
 			// 
 			// label13
 			// 
@@ -437,33 +416,15 @@
 			this.label13.TabIndex = 23;
 			this.label13.Text = "AppID";
 			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label12.Location = new System.Drawing.Point(239, 120);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(176, 17);
-			this.label12.TabIndex = 24;
-			this.label12.Text = "Account for a Web Service";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label11.Location = new System.Drawing.Point(239, 90);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(177, 17);
-			this.label11.TabIndex = 21;
-			this.label11.Text = "Password of Web Account ";
-			// 
 			// btnCheckIfWSWorks
 			// 
 			this.btnCheckIfWSWorks.Location = new System.Drawing.Point(455, 26);
 			this.btnCheckIfWSWorks.Name = "btnCheckIfWSWorks";
 			this.btnCheckIfWSWorks.Size = new System.Drawing.Size(123, 23);
 			this.btnCheckIfWSWorks.TabIndex = 26;
-			this.btnCheckIfWSWorks.Text = "Check If Works";
+			this.btnCheckIfWSWorks.Text = "Ping";
+			this.toolTip1.SetToolTip(this.btnCheckIfWSWorks, "Pings the SoftOne API. It is the simplest method that you can use to see that the" +
+        " API is functioning.");
 			this.btnCheckIfWSWorks.UseVisualStyleBackColor = true;
 			this.btnCheckIfWSWorks.Click += new System.EventHandler(this.button4_Click);
 			// 
@@ -494,12 +455,60 @@
 			this.tbSerialNumberOrRegisteredName.Size = new System.Drawing.Size(132, 22);
 			this.tbSerialNumberOrRegisteredName.TabIndex = 23;
 			this.tbSerialNumberOrRegisteredName.Text = "demo";
+			this.toolTip1.SetToolTip(this.tbSerialNumberOrRegisteredName, "Registered name or Serial Number");
+			// 
+			// btnRefresh
+			// 
+			this.btnRefresh.Location = new System.Drawing.Point(623, 26);
+			this.btnRefresh.Name = "btnRefresh";
+			this.btnRefresh.Size = new System.Drawing.Size(123, 23);
+			this.btnRefresh.TabIndex = 27;
+			this.btnRefresh.Text = "Refresh";
+			this.toolTip1.SetToolTip(this.btnRefresh, resources.GetString("btnRefresh.ToolTip"));
+			this.btnRefresh.UseVisualStyleBackColor = true;
+			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+			// 
+			// toolTip1
+			// 
+			this.toolTip1.AutoPopDelay = 50000;
+			this.toolTip1.InitialDelay = 500;
+			this.toolTip1.ReshowDelay = 100;
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+			this.label20.Location = new System.Drawing.Point(434, 120);
+			this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(57, 17);
+			this.label20.TabIndex = 37;
+			this.label20.Text = "UserID";
+			// 
+			// tbUserID
+			// 
+			this.tbUserID.Location = new System.Drawing.Point(516, 117);
+			this.tbUserID.Margin = new System.Windows.Forms.Padding(4);
+			this.tbUserID.Name = "tbUserID";
+			this.tbUserID.Size = new System.Drawing.Size(60, 22);
+			this.tbUserID.TabIndex = 36;
+			this.toolTip1.SetToolTip(this.tbUserID, "SoftOne User ID");
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(584, 120);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(61, 17);
+			this.label8.TabIndex = 42;
+			this.label8.Text = "Optional";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1095, 644);
+			this.ClientSize = new System.Drawing.Size(1001, 644);
+			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.btnCheckIfWSWorks);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.label9);
@@ -546,14 +555,11 @@
         private System.Windows.Forms.TextBox trdr;
         private System.Windows.Forms.TextBox item;
         private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Button btnCheckIfWSWorks;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.TextBox tbSerialNumberOrRegisteredName;
-		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.TextBox tbAppID;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.TextBox tbBranch;
@@ -564,11 +570,14 @@
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.TextBox tbModule;
 		private System.Windows.Forms.Label label18;
-		private System.Windows.Forms.TextBox tbUserID;
-		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.TextBox tbRefID;
 		private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Button btnRefresh;
+		private System.Windows.Forms.Button btnAuthenticate;
+		private System.Windows.Forms.ToolTip toolTip1;
+		private System.Windows.Forms.TextBox tbUserID;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.Label label8;
 	}
 }
 

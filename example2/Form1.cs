@@ -15,12 +15,13 @@ using System.Windows.Forms;
 using System.IO;
 using System.Net;
 using Newtonsoft.Json;
-
+using Newtonsoft.Json.Linq;
 
 namespace example2
 {
 	public partial class Form1 : Form
 	{
+		static string loginID = "";
 		static string clientID = "";
 
 		public Form1()
@@ -77,10 +78,21 @@ namespace example2
 			Boolean success = Convert.ToBoolean(jo["success"].ToString());
 			if (success)
 			{
+				foreach (var item in jo["objs"].Children())
+				{
+					tbCompany.Text = item["COMPANY"].ToString();
+					tbBranch.Text = item["BRANCH"].ToString();
+					tbModule.Text = item["MODULE"].ToString();
+					tbRefID.Text = item["REFID"].ToString();
+				}
 				return jo["clientID"].ToString();
 			}
 			else
 			{
+				tbCompany.Text = "";
+				tbBranch.Text = "";
+				tbModule.Text = "";
+				tbRefID.Text = "";
 				MessageBox.Show(jo["error"].ToString());
 				return "";
 			}
@@ -93,8 +105,18 @@ namespace example2
 		/// <returns></returns>
 		private string authenticate(string theClientId)
 		{
-			string authStr = "\"service\": \"authenticate\",\"clientID\": \"{0}\", \"COMPANY\": \"{1}\", \"BRANCH\": \"{2}\", \"MODULE\": \"{3}\", \"REFID\": \"{4}\", \"USERID\": \"{5}\"";
-			string rs = executeRequest("{" + string.Format(authStr, theClientId, tbCompany.Text, tbBranch.Text, tbModule.Text, tbRefID.Text, tbUserID.Text) + "}");
+			string rs = "";
+			string authStr = "";
+			if (tbUserID.Text != "")
+			{
+				authStr = "\"service\": \"authenticate\",\"clientID\": \"{0}\", \"COMPANY\": \"{1}\", \"BRANCH\": \"{2}\", \"MODULE\": \"{3}\", \"REFID\": \"{4}\", \"USERID\": \"{5}\"";
+				rs = executeRequest("{" + string.Format(authStr, theClientId, tbCompany.Text, tbBranch.Text, tbModule.Text, tbRefID.Text, tbUserID.Text) + "}");
+			}
+			else
+			{
+				authStr = "\"service\": \"authenticate\",\"clientID\": \"{0}\", \"COMPANY\": \"{1}\", \"BRANCH\": \"{2}\", \"MODULE\": \"{3}\", \"REFID\": \"{4}\"";
+				rs = executeRequest("{" + string.Format(authStr, theClientId, tbCompany.Text, tbBranch.Text, tbModule.Text, tbRefID.Text) + "}");
+			}
 
 			Newtonsoft.Json.Linq.JObject jo = Newtonsoft.Json.Linq.JObject.Parse(rs);
 			Boolean success = Convert.ToBoolean(jo["success"].ToString());
@@ -135,14 +157,43 @@ namespace example2
 		}
 
 
-
+		/// <summary>
+		/// It is used to Login the web account defined by RegisteredName in request URL. It returns a temporary 
+		/// access token (clientID) that can be later used in the “authenticate” method. It also returns the available 
+		/// set of login permissions for the User (Company, Branch, etc.).
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void button1_Click(object sender, EventArgs e)
 		{
-			string tempClientID = Login(tbWebUsername.Text, tbWebPassword.Text, tbAppID.Text);
-			if (tempClientID != "")
+			loginID = Login(tbWebUsername.Text, tbWebPassword.Text, tbAppID.Text);
+			if (loginID != "")
 			{
-				clientID = authenticate(tempClientID);
 				MessageBox.Show("Success login");
+			}
+			else
+			{
+				MessageBox.Show("Unsuccesfull login");
+			}
+		}
+
+		private void btnAuthenticate_Click(object sender, EventArgs e)
+		{
+			if (loginID != "")
+			{
+				clientID = authenticate(loginID);
+				if (clientID != "")
+				{
+					MessageBox.Show("Authentication was succesfull");
+				}
+				else
+				{
+					MessageBox.Show("Authentication Failed");
+				}
+																								 			}
+			else
+			{
+				MessageBox.Show("Please login first");
 			}
 		}
 
@@ -164,17 +215,65 @@ namespace example2
 
 		}
 
+		/// <summary>
+		/// Ping (Get Method) - Pings the SoftOne API.It is the simplest method that you can use to see that the API is functioning.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void button4_Click(object sender, EventArgs e)
 		{
-			if (tbSerialNumberOrRegisteredName.Text != "")
+			try
 			{
-				HttpWebRequest request = HttpWebRequest.Create($"http://{tbSerialNumberOrRegisteredName.Text}.oncloud.gr/s1services?ping") as HttpWebRequest;
-				HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-				Stream receiveStream = response.GetResponseStream();
-				StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-				MessageBox.Show(readStream.ReadToEnd().Replace("<br>", "\n"));
-				response.Close();
-				readStream.Close();
+				if (tbSerialNumberOrRegisteredName.Text != "")
+				{
+					HttpWebRequest request = HttpWebRequest.Create($"http://{tbSerialNumberOrRegisteredName.Text}.oncloud.gr/s1services?ping") as HttpWebRequest;
+					HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+					Stream receiveStream = response.GetResponseStream();
+					StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+					MessageBox.Show(readStream.ReadToEnd().Replace("<br>", "\n"));
+					response.Close();
+					readStream.Close();
+				}
+				else
+				{
+					MessageBox.Show("Please Enter SN or Registered Name");
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		/// <summary>
+		/// Restarts and refreshes the SoftOne API for the specific URL and returns OK when job is completed. 
+		/// Usually used when web application parameters are changed in SoftOne and user needs to see the changes immediately
+		/// (e.g. change of the user web menu in SoftOne S360 application).
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>		 
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+
+			try
+			{
+				if (tbSerialNumberOrRegisteredName.Text != "")
+				{
+					HttpWebRequest request = HttpWebRequest.Create($"http://{tbSerialNumberOrRegisteredName.Text}.oncloud.gr/s1services?refresh") as HttpWebRequest;
+					request.Timeout = 5000;
+					HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+					Stream receiveStream = response.GetResponseStream();
+					StreamReader readStream = new StreamReader(receiveStream);//, Encoding.UTF8);
+					MessageBox.Show(readStream.ReadToEnd().Replace("<br>", "\n"));
+				}
+				else
+				{
+					MessageBox.Show("Please Enter SN or Registered Name");
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
 			}
 		}
 	}
