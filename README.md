@@ -1,3 +1,3 @@
 # .NET-WebServices
 
-Forked project to clarify for neebies and support the latest Web Services functionality (01/07/2017). Only the Example 2 has been altered accordingly.
+Forked project to clarify for neebies and support the latest Web Services functionality (01/07/2017). Only the Example 2 has been altered accordingly. General information about the web service can be found here: https://softone.gr/ws/ but more detailed analysis exists in the Black Book...
