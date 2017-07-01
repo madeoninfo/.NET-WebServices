@@ -190,7 +190,7 @@ namespace example2
 				{
 					MessageBox.Show("Authentication Failed");
 				}
-																								 			}
+			}
 			else
 			{
 				MessageBox.Show("Please login first");
@@ -199,9 +199,40 @@ namespace example2
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			if (clientID != "")
+			if (clientID != "" && tbSQLScriptName.Text != "")
 			{
-				//textBox4.Text = execSql(textBox3.Text);
+				textBox4.Text = execSql(tbSQLScriptName.Text);
+			}
+		}
+
+		private string execSql(string text)
+		{
+			string result = "";
+			try
+			{
+				string rs = "";
+				string authStr = "";
+
+				authStr = "\"service\": \"SqlData\",\"clientID\": \"{0}\", \"AppID\": \"{1}\", \"SqlName\": \"{2}\"";
+				rs = executeRequest("{" + string.Format(authStr, clientID, tbAppID.Text, tbSQLScriptName.Text) + "}");
+
+				Newtonsoft.Json.Linq.JObject jo = Newtonsoft.Json.Linq.JObject.Parse(rs);
+				Boolean success = Convert.ToBoolean(jo["success"].ToString());
+				if (success)
+				{
+					result = jo["rows"].ToString();
+				}
+				else
+				{
+					MessageBox.Show(jo["error"].ToString());
+					result = "";
+				}
+				return result;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+				return result;
 			}
 		}
 

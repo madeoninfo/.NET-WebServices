@@ -35,7 +35,7 @@
 			this.tbWebPassword = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.tbSQLScriptName = new System.Windows.Forms.TextBox();
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.button2 = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +48,10 @@
 			this.item = new System.Windows.Forms.TextBox();
 			this.button3 = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.btnAuthenticate = new System.Windows.Forms.Button();
+			this.tbUserID = new System.Windows.Forms.TextBox();
+			this.label20 = new System.Windows.Forms.Label();
 			this.tbRefID = new System.Windows.Forms.TextBox();
 			this.label19 = new System.Windows.Forms.Label();
 			this.tbModule = new System.Windows.Forms.TextBox();
@@ -67,10 +70,9 @@
 			this.tbSerialNumberOrRegisteredName = new System.Windows.Forms.TextBox();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-			this.label20 = new System.Windows.Forms.Label();
-			this.tbUserID = new System.Windows.Forms.TextBox();
-			this.label8 = new System.Windows.Forms.Label();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -127,28 +129,28 @@
 			this.label2.Text = "Password";
 			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// textBox3
+			// tbSQLScriptName
 			// 
-			this.textBox3.Location = new System.Drawing.Point(33, 272);
-			this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-			this.textBox3.Multiline = true;
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(592, 67);
-			this.textBox3.TabIndex = 5;
-			this.textBox3.Text = "select top 5 code, name from trdr where sodtype=13";
+			this.tbSQLScriptName.Location = new System.Drawing.Point(21, 56);
+			this.tbSQLScriptName.Margin = new System.Windows.Forms.Padding(4);
+			this.tbSQLScriptName.Multiline = true;
+			this.tbSQLScriptName.Name = "tbSQLScriptName";
+			this.tbSQLScriptName.Size = new System.Drawing.Size(132, 24);
+			this.tbSQLScriptName.TabIndex = 5;
+			this.tbSQLScriptName.Text = "getProducts";
 			// 
 			// textBox4
 			// 
-			this.textBox4.Location = new System.Drawing.Point(33, 374);
+			this.textBox4.Location = new System.Drawing.Point(197, 57);
 			this.textBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.textBox4.Multiline = true;
 			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(592, 128);
+			this.textBox4.Size = new System.Drawing.Size(757, 142);
 			this.textBox4.TabIndex = 6;
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(648, 475);
+			this.button2.Location = new System.Drawing.Point(53, 88);
 			this.button2.Margin = new System.Windows.Forms.Padding(4);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(100, 28);
@@ -160,17 +162,17 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(37, 252);
+			this.label3.Location = new System.Drawing.Point(25, 36);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(36, 17);
+			this.label3.Size = new System.Drawing.Size(76, 17);
 			this.label3.TabIndex = 8;
-			this.label3.Text = "SQL";
+			this.label3.Text = "SQL Script";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(29, 355);
+			this.label4.Location = new System.Drawing.Point(194, 36);
 			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(87, 17);
@@ -277,6 +279,15 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Login Web User";
 			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(584, 120);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(61, 17);
+			this.label8.TabIndex = 42;
+			this.label8.Text = "Optional";
+			// 
 			// btnAuthenticate
 			// 
 			this.btnAuthenticate.Location = new System.Drawing.Point(516, 147);
@@ -287,6 +298,26 @@
 			this.btnAuthenticate.Text = "Authenticate";
 			this.btnAuthenticate.UseVisualStyleBackColor = true;
 			this.btnAuthenticate.Click += new System.EventHandler(this.btnAuthenticate_Click);
+			// 
+			// tbUserID
+			// 
+			this.tbUserID.Location = new System.Drawing.Point(516, 117);
+			this.tbUserID.Margin = new System.Windows.Forms.Padding(4);
+			this.tbUserID.Name = "tbUserID";
+			this.tbUserID.Size = new System.Drawing.Size(60, 22);
+			this.tbUserID.TabIndex = 36;
+			this.toolTip1.SetToolTip(this.tbUserID, "SoftOne User ID");
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+			this.label20.Location = new System.Drawing.Point(434, 120);
+			this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(57, 17);
+			this.label20.TabIndex = 37;
+			this.label20.Text = "UserID";
 			// 
 			// tbRefID
 			// 
@@ -474,40 +505,28 @@
 			this.toolTip1.InitialDelay = 500;
 			this.toolTip1.ReshowDelay = 100;
 			// 
-			// label20
+			// groupBox2
 			// 
-			this.label20.AutoSize = true;
-			this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-			this.label20.Location = new System.Drawing.Point(434, 120);
-			this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(57, 17);
-			this.label20.TabIndex = 37;
-			this.label20.Text = "UserID";
-			// 
-			// tbUserID
-			// 
-			this.tbUserID.Location = new System.Drawing.Point(516, 117);
-			this.tbUserID.Margin = new System.Windows.Forms.Padding(4);
-			this.tbUserID.Name = "tbUserID";
-			this.tbUserID.Size = new System.Drawing.Size(60, 22);
-			this.tbUserID.TabIndex = 36;
-			this.toolTip1.SetToolTip(this.tbUserID, "SoftOne User ID");
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(584, 120);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(61, 17);
-			this.label8.TabIndex = 42;
-			this.label8.Text = "Optional";
+			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox2.Controls.Add(this.tbSQLScriptName);
+			this.groupBox2.Controls.Add(this.textBox4);
+			this.groupBox2.Controls.Add(this.button2);
+			this.groupBox2.Controls.Add(this.label3);
+			this.groupBox2.Controls.Add(this.label4);
+			this.groupBox2.Location = new System.Drawing.Point(12, 256);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(977, 224);
+			this.groupBox2.TabIndex = 28;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "SQL Query";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1001, 644);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.btnCheckIfWSWorks);
 			this.Controls.Add(this.label10);
@@ -521,16 +540,13 @@
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.textBox4);
-			this.Controls.Add(this.textBox3);
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Form1";
 			this.Text = "Soft1 New Saldoc ";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -543,7 +559,7 @@
         private System.Windows.Forms.TextBox tbWebPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbSQLScriptName;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
@@ -578,6 +594,7 @@
 		private System.Windows.Forms.TextBox tbUserID;
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.GroupBox groupBox2;
 	}
 }
 
