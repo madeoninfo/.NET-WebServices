@@ -136,9 +136,9 @@ namespace example2
 		private string postNewSalDoc(string seriesId, string trdrId, string itemId)
 		{
 			string postStr = "{\"OBJECT\": \"saldoc\",\"SERVICE\": \"setData\",\"clientID\": \"" + clientID +
-					"\",\"appId\": \"157\",\"KEY\": \"\",\"data\": {\"SALDOC\": [{\"SERIES\": \"" + seriesId +
+					"\",\"appId\": \""+ tbAppID.Text + "\",\"KEY\": \"\",\"data\": {\"SALDOC\": [{\"SERIES\": \"" + seriesId +
 					"\",\"TRDR\": \"" + trdrId +
-					"\",\"TRNDATE\": \"2015-09-20 12:00:00\"}],\"ITELINES\": [{\"LINENUM\": \"0\",\"MTRL\": \"" + itemId +
+					"\",\"TRNDATE\": \"" + String.Format("{0:u}", DateTime.Now) +"\"}],\"ITELINES\": [{\"LINENUM\": \"0\",\"MTRL\": \"" + itemId +
 					"\",\"QTY1\": \"1\"}]}}";
 			string rs = executeRequest(postStr);
 

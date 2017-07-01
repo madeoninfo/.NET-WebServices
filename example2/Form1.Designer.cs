@@ -71,8 +71,10 @@
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
+			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -182,7 +184,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(29, 516);
+			this.label5.Location = new System.Drawing.Point(25, 35);
 			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(85, 17);
@@ -192,7 +194,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(27, 561);
+			this.label6.Location = new System.Drawing.Point(23, 80);
 			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(85, 17);
@@ -202,7 +204,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(58, 601);
+			this.label7.Location = new System.Drawing.Point(54, 120);
 			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(51, 17);
@@ -211,34 +213,37 @@
 			// 
 			// series
 			// 
-			this.series.Location = new System.Drawing.Point(161, 512);
+			this.series.Location = new System.Drawing.Point(157, 31);
 			this.series.Margin = new System.Windows.Forms.Padding(4);
 			this.series.Name = "series";
 			this.series.Size = new System.Drawing.Size(132, 22);
 			this.series.TabIndex = 13;
 			this.series.Text = "7021";
+			this.toolTip1.SetToolTip(this.series, "The series ");
 			// 
 			// trdr
 			// 
-			this.trdr.Location = new System.Drawing.Point(161, 558);
+			this.trdr.Location = new System.Drawing.Point(157, 77);
 			this.trdr.Margin = new System.Windows.Forms.Padding(4);
 			this.trdr.Name = "trdr";
 			this.trdr.Size = new System.Drawing.Size(132, 22);
 			this.trdr.TabIndex = 14;
-			this.trdr.Text = "40";
+			this.trdr.Text = "29";
+			this.toolTip1.SetToolTip(this.trdr, "The customer TRDR ID");
 			// 
 			// item
 			// 
-			this.item.Location = new System.Drawing.Point(161, 597);
+			this.item.Location = new System.Drawing.Point(157, 116);
 			this.item.Margin = new System.Windows.Forms.Padding(4);
 			this.item.Name = "item";
 			this.item.Size = new System.Drawing.Size(132, 22);
 			this.item.TabIndex = 15;
-			this.item.Text = "1191";
+			this.item.Text = "1770";
+			this.toolTip1.SetToolTip(this.item, "The Item MTRL ID");
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(365, 597);
+			this.button3.Location = new System.Drawing.Point(346, 109);
 			this.button3.Margin = new System.Windows.Forms.Padding(4);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(193, 28);
@@ -521,11 +526,28 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "SQL Query";
 			// 
+			// groupBox3
+			// 
+			this.groupBox3.Controls.Add(this.label5);
+			this.groupBox3.Controls.Add(this.label6);
+			this.groupBox3.Controls.Add(this.label7);
+			this.groupBox3.Controls.Add(this.series);
+			this.groupBox3.Controls.Add(this.trdr);
+			this.groupBox3.Controls.Add(this.item);
+			this.groupBox3.Controls.Add(this.button3);
+			this.groupBox3.Location = new System.Drawing.Point(12, 487);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(977, 158);
+			this.groupBox3.TabIndex = 29;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "New Sales Document";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1001, 644);
+			this.ClientSize = new System.Drawing.Size(1001, 661);
+			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.btnCheckIfWSWorks);
@@ -533,13 +555,6 @@
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.tbSerialNumberOrRegisteredName);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.item);
-			this.Controls.Add(this.trdr);
-			this.Controls.Add(this.series);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.label5);
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Form1";
 			this.Text = "Soft1 New Saldoc ";
@@ -547,6 +562,8 @@
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -595,6 +612,7 @@
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.GroupBox groupBox3;
 	}
 }
 
