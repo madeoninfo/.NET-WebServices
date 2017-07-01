@@ -1,0 +1,10 @@
+C:\GIT\SoftOne\moiWebServices\example2\bin\Debug\example2.exe.config
+C:\GIT\SoftOne\moiWebServices\example2\bin\Debug\example2.exe
+C:\GIT\SoftOne\moiWebServices\example2\bin\Debug\example2.pdb
+C:\GIT\SoftOne\moiWebServices\example2\bin\Debug\Newtonsoft.Json.dll
+C:\GIT\SoftOne\moiWebServices\example2\obj\Debug\example2.csprojResolveAssemblyReference.cache
+C:\GIT\SoftOne\moiWebServices\example2\obj\Debug\example2.Form1.resources
+C:\GIT\SoftOne\moiWebServices\example2\obj\Debug\example2.Properties.Resources.resources
+C:\GIT\SoftOne\moiWebServices\example2\obj\Debug\example2.csproj.GenerateResource.Cache
+C:\GIT\SoftOne\moiWebServices\example2\obj\Debug\example2.exe
+C:\GIT\SoftOne\moiWebServices\example2\obj\Debug\example2.pdb
